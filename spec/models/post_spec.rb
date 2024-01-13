@@ -114,4 +114,27 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe '* associations' do
+    context '.author' do
+      it "=> responds for belongs to an 'author'" do
+        association = described_class.reflect_on_association(:author)
+        expect(association.macro).to eq(:belongs_to)
+      end
+    end
+
+    context '.comments' do
+      it "=> responds for has many 'comments'" do
+        association = described_class.reflect_on_association(:comments)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+
+    context '.likes' do
+      it "=> responds for has many 'likes'" do
+        association = described_class.reflect_on_association(:likes)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+  end
 end
