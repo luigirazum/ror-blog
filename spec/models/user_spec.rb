@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
           %i[1 2 3 4 5 6 7 8].each do |post_number|
             time = Time.now - (2.hour * post_number.to_s.to_i)
             posts << Post.create(author: user, title: "Post ##{post_number}", text: "Text for Post ##{post_number}",
-                                created_at: time, updated_at: time)
+                                 created_at: time, updated_at: time)
           end
 
           post1, post2, post3, = posts

@@ -80,7 +80,7 @@ RSpec.describe Post, type: :model do
             time = Time.now - (2.hour * comment_number.to_s.to_i)
             user = User.create(name: "User ##{comment_number} Name")
             comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time,
-                                      updated_at: time)
+                                       updated_at: time)
           end
 
           comment1, comment2, comment3, comment4, comment5, = comments
