@@ -64,4 +64,54 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe '* methods' do
+    describe '#most_recent_comments' do
+      context "- when a 'Post' is created" do
+        it "> should return zero 'comments'" do
+          expect(post.most_recent_comments).to be_empty
+        end
+      end
+
+      context "- when a 'Post' has several 'comments'" do
+        it "> should return the five most recent 'comments'" do
+          comments = []
+          %i[1 2 3 4 5 6 7 8].each do |comment_number|
+            time = Time.now - (2.hour * comment_number.to_s.to_i)
+            user = User.create(name: "User ##{comment_number} Name")
+            comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time,
+                                      updated_at: time)
+          end
+
+          comment1, comment2, comment3, comment4, comment5, = comments
+          expect(post.most_recent_comments).to eq([comment1, comment2, comment3, comment4, comment5])
+        end
+      end
+    end
+
+    describe '#update_posts_counter' do
+      context "- when 'called'" do
+        it "> should refresh the 'posts_counter'" do
+          user.posts_counter = nil
+          expect(user.posts_counter).to be_nil
+          post.update_posts_counter
+          expect(user.posts_counter).to eq(1)
+        end
+      end
+
+      context "- when a 'Post' is created" do
+        it "> should refresh 'posts_counter' increased by 1" do
+          Post.create(author: post.author, title: 'An extra Post', text: 'Another Post')
+          expect(user.posts_counter).to eq(post.author.posts_counter)
+        end
+      end
+
+      context "- when a 'Post' is deleted" do
+        it "> should refresh 'posts_counter' decreased by 1" do
+          Post.destroy(post.id)
+          expect(user.posts_counter).to eq(post.author.posts_counter)
+        end
+      end
+    end
+  end
 end
