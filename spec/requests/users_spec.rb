@@ -22,7 +22,7 @@ RSpec.describe "'Users' - [Controller]", type: :request do
     end
 
     context "* 'placeholder text'", :placeholder do
-      it "- 'body' includes 'the list of Users'" do
+      it "- 'body' includes 'Lists all the users'" do
         expect(response.body).to match(/Lists all the users/)
       end
     end
@@ -45,6 +45,12 @@ RSpec.describe "'Users' - [Controller]", type: :request do
 
       it "- renders 'users/show' template" do
         expect(response).to render_template('users/show')
+      end
+    end
+
+    context "* 'placeholder text'", :placeholder do
+      it "- 'body' includes 'details for a User'" do
+        expect(response.body).to match(/details for a User/)
       end
     end
   end
