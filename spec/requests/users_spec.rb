@@ -28,10 +28,13 @@ RSpec.describe "'Users' - [Controller]", type: :request do
     end
   end
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/users/1'
-      expect(response).to have_http_status(:success)
+  describe "'GET /show' => 'show' action at 'users' controller" do
+    before { get user_path({ id: 1 }) }
+
+    context "* 'status'", :status do
+      it '- returns http success/ok' do
+        expect(response).to have_http_status(:success)
+      end
     end
   end
 end
