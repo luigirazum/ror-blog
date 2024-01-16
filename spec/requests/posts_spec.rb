@@ -30,7 +30,7 @@ RSpec.describe "'Posts' - [Controller]", type: :request do
 
   describe "'GET /show' => 'show' action at 'posts' controller" do
     before { get user_post_path({ user_id: 1, id: 1 }) }
-  
+
     context "* 'status'", :status do
       it 'returns http success' do
         expect(response).to have_http_status(:success)
