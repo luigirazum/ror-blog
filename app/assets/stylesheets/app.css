@@ -1,0 +1,48 @@
+.user__item {
+  padding: 1em;
+}
+
+.user__item + .user__item {
+  margin-block-start: 1em;
+}
+
+.user__link {
+  background-color: var(--app-white);
+  padding: 2em;
+  gap: 3em;
+  transition: background-color var(--default-transition);
+}
+
+.user__link:hover,
+.user__link:focus {
+  background-color: var(--neutral-color);
+}
+
+.user__img {
+  width: 18rem;
+}
+
+.hero__text {
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 2em;
+  border: 5px solid var(--primary-color);
+  align-items: center;
+}
+
+.hero__name {
+  flex-grow: 1;
+  flex-basis: 100%;
+  font-size: var(--fs-3-50);
+  font-weight: var(--fw-bold);
+}
+
+.counter {
+  flex-grow: 1;
+  font-size: var(--fs-2-20);
+  text-align: end;
+}
+
+.counter__name {
+  font-weight: var(--fw-bold);
+}

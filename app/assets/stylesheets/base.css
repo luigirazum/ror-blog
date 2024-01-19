@@ -1,0 +1,17 @@
+.container {
+  width: 95%;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+body {
+  background-color: var(--app-background);
+  color: var(--app-text);
+  font-family: var(--ff-text);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+}
+
+.main {
+  padding-block: 6rem 12rem;
+}

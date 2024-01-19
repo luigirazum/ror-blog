@@ -1,0 +1,6 @@
+:root {
+  /* transitions */
+  --default-transition: 0.35s ease;
+}
+
+.flex { display: flex; }
