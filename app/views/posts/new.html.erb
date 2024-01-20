@@ -1,0 +1,17 @@
+<section class="post--new">
+  <h2 class="ff-headings fw-bold fs-700">New Post</h2>
+  <%= form_with model: @post, class: 'form' do |f| %>
+    <div class="form__field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'form__input' %>
+    </div>
+    <div class="form__field">
+      <%= f.label :message %><br>
+      <%= f.text_area :text, size: "60x14", class: 'form__input' %>
+    </div>
+
+    <div>
+      <%= f.submit "Publish", class: 'btn btn-primary btn-action' %>
+    </div>
+  <% end %>
+</section>
