@@ -101,3 +101,9 @@
   padding-block: 1em;
   text-align: center;
 }
+
+.post__actions {
+  display: inline-flex;
+  flex-grow: 1;
+  text-align: start;
+}
