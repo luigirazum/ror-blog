@@ -1,0 +1,14 @@
+<section class="comment--new">
+  <h2 class="ff-headings fw-bold fs-700">New Comment</h2>
+  <%= form_with model: @comment, url: post_comments_url(@post), local: true, class: 'form' do |form| %>
+
+    <div class="form_field">
+      <%= form.label :comment %>
+      <%= form.text_area :text, size: "60x14", class: 'form__input' %>
+    </div>
+
+    <div>
+      <%= form.submit 'Create Comment', class: 'btn btn-primary btn-action' %>
+    </div>
+  <% end %>
+</section>
