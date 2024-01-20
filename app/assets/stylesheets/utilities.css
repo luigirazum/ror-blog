@@ -34,3 +34,11 @@
 .border-accent {
   border: 5px solid var(--accent-color);
 }
+
+.border-neutral {
+  border: 5px solid var(--neutral-color);
+}
+
+.border-heading-neutral {
+  border-bottom: 5px solid var(--neutral-color);
+}
