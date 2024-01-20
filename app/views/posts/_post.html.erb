@@ -3,6 +3,7 @@
 </h3>
 <p class="post__text"> <%= truncate(post.text, length: 250, omission: '... (more)') %> </p>
 <div class="post__counters">
+  <%= link_to 'New Comment', new_post_comment_path(post), class: 'btn btn--primary' %>
   <%= render partial: 'application/counter', locals: {
   counter_name: 'Comments',
   counter_value: post.comments_counter } %>
