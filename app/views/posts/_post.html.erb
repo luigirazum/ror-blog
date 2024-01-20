@@ -4,6 +4,7 @@
 <p class="post__text"> <%= truncate(post.text, length: 250, omission: '... (more)') %> </p>
 <div class="post__counters">
   <%= link_to 'New Comment', new_post_comment_path(post), class: 'btn btn--primary' %>
+  <%= button_to "Give Like", post_likes_path(post), method: :post, class: 'btn btn--primary' %>
   <%= render partial: 'application/counter', locals: {
   counter_name: 'Comments',
   counter_value: post.comments_counter } %>
