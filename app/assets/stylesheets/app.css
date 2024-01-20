@@ -74,7 +74,8 @@
   background-color: var(--primary-color-100);
 }
 
-.post__number { font-weight: var(--fw-bold); }
+.post__number,
+.comment__user { font-weight: var(--fw-bold); }
 
 .post + .post { margin-block-start: 0.75em; }
 
@@ -83,5 +84,13 @@
   text-align: end;
   width: 100%;
 }
+
+.post--comments {
+  background-color: var(--app-background);
+  margin-block-start: 0.75em;
+  padding: 0.5em;
+}
+
+.comment + .comment { margin-block-start: 0.25em; }
 
 .actions { text-align: center; }
