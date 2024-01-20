@@ -17,13 +17,13 @@
   end
 
   uname = "#{name} #{Faker::Name.last_name}"
-  photo_url = "https://fakeimg.pl/350x350/252f3f,255/f29800,255/?font=roboto&text=#{name}+📸"
+  photo_url = "https://fakeimg.pl/160x160/252f3f,255/f29800,255/?font=roboto&text=#{name}+📸"
   user_bio = []
-  6.times do
-    user_bio << Faker::Lorem.paragraphs(number: 5).join(' ')
+  3.times do
+    user_bio << Faker::Lorem.paragraphs(number: 3).join(' ')
   end
 
-  User.create(name: uname, photo: photo_url, bio: user_bio.join('\n'))
+  User.create(name: uname, photo: photo_url, bio: user_bio.join('\\n'))
 end
 
 # Generate Posts
