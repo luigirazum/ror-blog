@@ -27,6 +27,8 @@
 
 .flex { display: flex; }
 
+.bg-white { background-color: var(--app-white); }
+
 .border-primary {
   border: 5px solid var(--primary-color);
 }

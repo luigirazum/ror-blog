@@ -79,6 +79,8 @@
 
 .post + .post { margin-block-start: 0.75em; }
 
+.post__author { text-align: end; }
+
 .post__counters {
   display: inline-flex;
   text-align: end;
@@ -91,6 +93,11 @@
   padding: 0.5em;
 }
 
+.post--comments__all,
+.full-post__text { margin-block-start: 1em; }
 .comment + .comment { margin-block-start: 0.25em; }
 
-.actions { text-align: center; }
+.actions {
+  padding-block: 1em;
+  text-align: center;
+}

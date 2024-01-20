@@ -15,7 +15,7 @@ body {
   margin-inline: auto;
 }
 
-section { padding: 1em; }
+section { padding: 1.5em; }
 section + section { margin-block-start: 2em; }
 
 .btn {
@@ -24,6 +24,8 @@ section + section { margin-block-start: 2em; }
   font-size: var(--fs-500);
   padding: 0.5em 1em;
 }
+
+.btn + .btn { margin-inline-start: 1em; }
 
 .btn--primary {
   background-color: var(--accent-color);
