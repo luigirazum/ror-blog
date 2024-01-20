@@ -1,0 +1,7 @@
+<%= link_to user_post_path(post.author, post), class: 'post border-accent post--link' do %>
+  <%= yield %>
+  <section class="post--comments fs-400 border-neutral">
+    <h3 class="ff-headings fw-bold fs-500 border-heading-neutral">Recent Comments</h3>
+    <%= render_comments(post.most_recent_comments) %>
+  </section>
+<% end %>
