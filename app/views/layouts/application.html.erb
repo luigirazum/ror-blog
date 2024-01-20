@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <p class="flash flash--notice <%= 'flash--show' if notice %>"><%= notice %></p>
+    <p class="flash flash--alert <%= 'flash--show' if alert %>"><%= alert %></p>
+
     <main class="main container">
       <%= yield %>
     </main>
