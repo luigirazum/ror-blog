@@ -15,4 +15,10 @@ class PostsController < ApplicationController
       format.html { render :new, locals: { post: @post } }
     end
   end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end
