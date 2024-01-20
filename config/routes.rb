@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :posts, only: %i[new create], constraints: { id: /[0-9]+/ }
+  resources :posts, only: %i[new create], constraints: { id: /[0-9]+/ } do
+    resources :comments, only: %i[new create]
+  end
 
   resources :users, only: %i[index show], constraints: { id: /[0-9]+/ } do
     resources :posts, only: %i[index show]
