@@ -1,0 +1,46 @@
+body {
+  background-color: var(--app-background);
+  color: var(--app-text);
+  font-family: var(--ff-text);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+}
+
+.main { padding-block: 6rem 12rem; }
+
+.container {
+  width: 95%;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+section { padding: 1.5em; }
+section + section { margin-block-start: 2em; }
+
+.btn {
+  line-height: 1;
+  font-family: var(--ff-controls);
+  font-size: var(--fs-500);
+  padding: 0.5em 1em;
+}
+
+.btn + .btn { margin-inline-start: 1em; }
+
+.btn--primary {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  transition: color var(--default-transition);
+  transition: background-color var(--default-transition);
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  color: var(--accent-color);
+  background-color: var(--neutral-color);
+}
+
+.btn--primary:active {
+  background-color: var(--app-text);
+  color: var(--neutral-color);
+}

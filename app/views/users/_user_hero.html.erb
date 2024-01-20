@@ -1,0 +1,8 @@
+<%= image_tag user.photo, alt: user.name, class: 'user__img' %>
+
+<div class="hero__text border-primary flex">
+  <h2 class="hero__name"><%= user.name %></h2>
+  <%= render partial: 'application/counter', locals: {
+    counter_name: 'Number of posts',
+    counter_value: user.posts_counter } %>
+</div>

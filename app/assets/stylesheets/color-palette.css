@@ -1,0 +1,30 @@
+:root {
+  /* color palette
+   * app-background: #f5f5f5 / hsl(0, 0%, 96%)
+   * app-text: #252f3f / hsl(0, 0%, 20%) */
+  --clr-background: 0, 0%, 93%;
+  --clr-white: 0, 0%, 96%;
+  --clr-text: 217, 26%, 5%;
+  --app-background: hsl(var(--clr-background));
+  --app-white: hsl(var(--clr-white));
+  --app-text: hsl(var(--clr-text));
+
+  /* primary: #f29800 / hsl(38, 100%, 47%)
+  * secondary: #252f3f / hsl(217, 26%, 20%) */
+  --clr-primary: 38, 100%, 47%;
+  --clr-accent: 217, 26%, 20%;
+  --primary-color: hsl(var(--clr-primary));
+  --primary-color-100: hsl(var(--clr-primary), 0.15);
+  --accent-color: hsl(var(--clr-accent));
+  --accent-color-100: hsl(var(--clr-accent), 0.15);
+
+  /* complement: #1fad2b / hsl(125, 70%, 40%)
+   * neutral: #777 / hsl(0, 0%, 47%) */
+  --clr-secondary: 125, 70%, 40%;
+  --clr-neutral: 0, 0%, 47%;
+  --secondary-color: hsl(var(--clr-secondary));
+  --neutral-color: hsl(var(--clr-neutral));
+
+  /* transparent */
+  --transparent: transparent;
+}

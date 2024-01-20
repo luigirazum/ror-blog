@@ -1,2 +1,25 @@
-<h1>Post</h1>
-<p>Show the details of a Post for a Single User</p>
+<article class="post fs-300 border-primary bg-white">
+  <h2 class="ff-headings fs-600 full-post">
+    <span class="fw-bold full-post__number">Post #<%= @post.id %></span> | <%= @post.title %>
+  </h2>
+  <h3 class="fw-bold fs-700 post__author">by <span class="fw-regular"><%= @post.author.name %></span></h3>
+  <div class="post__counters">
+    <%= render partial: 'application/counter', locals: {
+    counter_name: 'Comments',
+    counter_value: @post.comments_counter } %>
+    <%= render partial: 'application/counter', locals: {
+    counter_name: 'Likes',
+    counter_value: @post.likes_counter } %>
+  </div>
+  <p class="full-post__text fs-400"> <%= @post.text %> </p>
+
+  <section class="post--comments__all fs-400 border-neutral">
+    <h3 class="ff-headings fw-bold fs-500 border-heading-neutral">Post Comments</h3>
+    <%= render_comments(@post.comments) %>
+  </section>
+</article>
+<section class="actions">
+  <%= link_to 'See all users', root_path, class: 'btn btn--primary' %>
+  <%= link_to 'See Author', user_path(@post.author), class: 'btn btn--primary' %>
+  <%= link_to 'See Author\'s Posts', user_posts_path(@post.author), class: 'btn btn--primary' %>
+</section>

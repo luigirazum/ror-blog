@@ -1,0 +1,103 @@
+.user__item {
+  padding: 1em;
+}
+
+.user__item + .user__item {
+  margin-block-start: 0.5em;
+}
+
+.user__link {
+  background-color: var(--app-white);
+  padding: 0.75em;
+  gap: 1.5em;
+  transition: background-color var(--default-transition);
+}
+
+.user__link:hover,
+.user__link:focus {
+  background-color: var(--neutral-color);
+}
+
+.hero {
+  padding: 0;
+  gap: 1.5em;
+}
+
+.user__img {
+  width: 15rem;
+}
+
+.hero__text {
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 1em;
+  align-items: center;
+}
+
+.hero__name {
+  flex-grow: 1;
+  flex-basis: 100%;
+  font-size: var(--fs-900);
+  font-weight: var(--fw-bold);
+}
+
+.counter {
+  flex-grow: 1;
+  text-align: end;
+}
+
+.counter + .counter {
+  margin-inline-start: 1em;
+  flex-grow: 0;
+}
+
+.counter__name {
+  font-weight: var(--fw-bold);
+  color: var(--accent-color);
+}
+
+.bio__paragraph,
+.post__header { margin-block-end: 0.75rem; }
+
+.post {
+  padding: 1em;
+  display: block;
+}
+
+.post--link {
+  background-color: var(--app-white);
+  transition: background-color var(--default-transition);
+}
+
+.post--link:hover,
+.post--link:focus {
+  background-color: var(--primary-color-100);
+}
+
+.post__number,
+.comment__user { font-weight: var(--fw-bold); }
+
+.post + .post { margin-block-start: 0.75em; }
+
+.post__author { text-align: end; }
+
+.post__counters {
+  display: inline-flex;
+  text-align: end;
+  width: 100%;
+}
+
+.post--comments {
+  background-color: var(--app-background);
+  margin-block-start: 0.75em;
+  padding: 0.5em;
+}
+
+.post--comments__all,
+.full-post__text { margin-block-start: 1em; }
+.comment + .comment { margin-block-start: 0.25em; }
+
+.actions {
+  padding-block: 1em;
+  text-align: center;
+}
