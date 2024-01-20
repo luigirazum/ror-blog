@@ -1,0 +1,12 @@
+<h3 class="post__header">
+  <span class="post__number">Post #<%= post.id %></span> | <%= truncate(post.title, length: 80) %>
+</h3>
+<p class="post__text"> <%= truncate(post.text, length: 250, omission: '... (more)') %> </p>
+<div class="post__counters">
+  <%= render partial: 'application/counter', locals: {
+  counter_name: 'Comments',
+  counter_value: post.comments_counter } %>
+  <%= render partial: 'application/counter', locals: {
+  counter_name: 'Likes',
+  counter_value: post.likes_counter } %>
+</div>
