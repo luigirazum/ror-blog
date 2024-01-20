@@ -20,18 +20,20 @@
 
   /* font-sizes definitions: rem units */
   --fs-base: 1rem;
-  --fs-3-50: calc(var(--fs-base) * 3.5);
-  --fs-2-20: calc(var(--fs-base) * 2.2);
-  --fs-1-80: calc(var(--fs-base) * 1.8);
-  --fs-1-60: calc(var(--fs-base) * 1.6);
-  --fs-1-30: calc(var(--fs-base) * 1.3);
-  --fs-1-15: calc(var(--fs-base) * 1.15);
-  --fs-0-90: calc(var(--fs-base) * 0.9);
-  --fs-0-85: calc(var(--fs-base) * 0.85);
-  --fs-0-75: calc(var(--fs-base) * 0.75);
+  --fs-075: calc(var(--fs-base) * 0.75);
+  --fs-085: calc(var(--fs-base) * 0.85);
+  --fs-100: calc(var(--fs-base) * 0.9);
+  --fs-200: calc(var(--fs-base) * 1.15);
+  --fs-300: calc(var(--fs-base) * 1.3);
+  --fs-400: calc(var(--fs-base) * 1.5);
+  --fs-450: calc(var(--fs-base) * 1.6);
+  --fs-500: calc(var(--fs-base) * 1.65);
+  --fs-600: calc(var(--fs-base) * 1.8);
+  --fs-700: calc(var(--fs-base) * 2.2);
+  --fs-900: calc(var(--fs-base) * 3.5);
 
   /* font-family assignments */
-  --ff-titles: var(--font-poppins);
-  --ff-controls: var(--font-roboto-flex);
   --ff-text: var(--font-roboto-flex);
+  --ff-headings: var(--font-poppins);
+  --ff-controls: var(--font-roboto-flex);
 }
