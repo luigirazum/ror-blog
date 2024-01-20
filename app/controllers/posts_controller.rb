@@ -16,6 +16,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def create
+    @post = Post.new(post_params)
+    @post.author = current_user
+    respond_to do |format|
+      format.html do
+        if @post.save
+          # redirect to index
+          redirect_to user_posts_path(@post.author), notice: 'The Post was published successfully.'
+        else
+          # error message
+          flash[:alert] = @post.errors.full_messages.first
+          # render new
+          redirect_back_or_to(new_post_url(@post))
+        end
+      end
+    end
+  end
+
   private
 
   def post_params
