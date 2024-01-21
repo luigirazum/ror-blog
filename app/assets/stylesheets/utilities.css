@@ -1,6 +1,12 @@
 :root {
   /* transitions */
   --default-transition: 0.35s ease;
+
+  /* borders */
+  --border-primary: 5px solid var(--primary-color);
+  --border-accent: 5px solid var(--accent-color);
+  --border-accent-200: 3px solid var(--accent-color);
+  --border-neutral: 5px solid var(--neutral-color);
 }
 
 .fs-075 { font-size: var(--fs-075); }
@@ -29,18 +35,11 @@
 
 .bg-white { background-color: var(--app-white); }
 
-.border-primary {
-  border: 5px solid var(--primary-color);
-}
+.border-primary { border: var(--border-primary); }
+.border-accent { border: var(--border-accent); }
+.border-neutral { border: var(--border-neutral); }
 
-.border-accent {
-  border: 5px solid var(--accent-color);
-}
-
-.border-neutral {
-  border: 5px solid var(--neutral-color);
-}
-
-.border-heading-neutral {
-  border-bottom: 5px solid var(--neutral-color);
+.border-heading-neutral { 
+  border-bottom: var(--border-neutral);
+  margin-block-end: 0.5rem;
 }
