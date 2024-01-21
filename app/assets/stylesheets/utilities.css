@@ -39,7 +39,7 @@
 .border-accent { border: var(--border-accent); }
 .border-neutral { border: var(--border-neutral); }
 
-.border-heading-neutral { 
+.border-heading-neutral {
   border-bottom: var(--border-neutral);
   margin-block-end: 0.5rem;
 }

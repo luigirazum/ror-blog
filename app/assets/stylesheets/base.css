@@ -26,7 +26,6 @@ section + section { margin-block-start: 2.5rem; }
   display: inline-block;
 }
 
-
 .btn + .btn,
 .btn--form + .btn--form {
   margin-inline-start: 1em;
@@ -44,9 +43,7 @@ section + section { margin-block-start: 2.5rem; }
 }
 
 .btn--primary:hover,
-.btn--primary:focus,
-.post .btn--primary:hover,
-.post .btn--primary:focus {
+.btn--primary:focus {
   color: var(--accent-color);
   background-color: var(--neutral-color);
 }
@@ -55,4 +52,10 @@ section + section { margin-block-start: 2.5rem; }
 .post .btn--primary:active {
   background-color: var(--app-text);
   color: var(--neutral-color);
+}
+
+.post .btn--primary:hover,
+.post .btn--primary:focus {
+  color: var(--accent-color);
+  background-color: var(--neutral-color);
 }
