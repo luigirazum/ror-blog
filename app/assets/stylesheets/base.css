@@ -16,16 +16,21 @@ body {
 }
 
 section { padding: 1.5em; }
-section + section { margin-block-start: 2em; }
+section + section { margin-block-start: 2.5rem; }
 
 .btn {
+  cursor: pointer;
   line-height: 1;
   font-family: var(--ff-controls);
-  font-size: var(--fs-500);
   padding: 0.5em 1em;
+  display: inline-block;
 }
 
-.btn + .btn { margin-inline-start: 1em; }
+
+.btn + .btn,
+.btn--form + .btn--form {
+  margin-inline-start: 1em;
+}
 
 .btn--primary {
   background-color: var(--accent-color);
@@ -34,13 +39,20 @@ section + section { margin-block-start: 2em; }
   transition: background-color var(--default-transition);
 }
 
+.post .btn--primary {
+  pointer-events: auto;
+}
+
 .btn--primary:hover,
-.btn--primary:focus {
+.btn--primary:focus,
+.post .btn--primary:hover,
+.post .btn--primary:focus {
   color: var(--accent-color);
   background-color: var(--neutral-color);
 }
 
-.btn--primary:active {
+.btn--primary:active,
+.post .btn--primary:active {
   background-color: var(--app-text);
   color: var(--neutral-color);
 }
