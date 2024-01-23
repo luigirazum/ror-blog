@@ -69,3 +69,9 @@ group :development do
   # Write tests and unit tests using BDD/TDD [https://rspec.info/]
   gem 'rspec-rails'
 end
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
