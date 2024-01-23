@@ -1,8 +1,12 @@
-<h3 class="post__header">
-  <span class="post__number">Post #<%= post.id %></span> | <%= truncate(post.title, length: 80) %>
-</h3>
+<%= link_to user_post_path(post.author, post), class: 'post--link' do %>
+  <h3 class="post__header">
+    <span class="post__number">Post #<%= post.id %></span> | <%= truncate(post.title, length: 80) %>
+  </h3>
+<% end %>
 <p class="post__text"> <%= truncate(post.text, length: 250, omission: '... (more)') %> </p>
 <div class="post__counters">
+  <%= button_to 'New Comment', new_post_comment_path(post), method: :get, class: 'btn btn--primary', form_class: 'btn--form' %>
+  <%= button_to "Give Like", post_likes_path(post), method: :post, class: 'btn btn--primary', form_class: 'btn--form' %>
   <%= render partial: 'application/counter', locals: {
   counter_name: 'Comments',
   counter_value: post.comments_counter } %>

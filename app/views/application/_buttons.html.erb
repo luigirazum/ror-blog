@@ -1,0 +1,17 @@
+<section class="actions">
+  <% if current_page?(root_path) %>
+    <%= link_to('New Post', new_post_path, class: 'btn btn--primary') %>
+  <% end %>
+  <% if local_assigns.fetch(:user, nil) && current_page?(user_url(user)) %>
+    <%= link_to 'See all posts', user_posts_path(user), class: 'btn btn--primary' %>
+  <% end %>
+  <% if local_assigns.fetch(:user, nil) && current_page?(user_posts_url(user)) %>
+    <%= link_to 'See all users', root_path, class: 'btn btn--primary' %>
+    <%= link_to 'Back to User', user_path(user), class: 'btn btn--primary' %>
+  <% end %>
+  <% if local_assigns.fetch(:user, nil) && local_assigns.fetch(:post, nil) && current_page?(user_post_url(user, post)) %>
+    <%= link_to 'See all users', root_path, class: 'btn btn--primary' %>
+    <%= link_to 'See Author', user_path(post.author), class: 'btn btn--primary' %>
+    <%= link_to 'See Author\'s Posts', user_posts_path(post.author), class: 'btn btn--primary' %>
+  <% end %>
+</section>

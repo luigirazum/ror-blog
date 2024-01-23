@@ -15,6 +15,7 @@
   --clr-accent: 217, 26%, 20%;
   --primary-color: hsl(var(--clr-primary));
   --primary-color-100: hsl(var(--clr-primary), 0.15);
+  --primary-color-500: hsl(var(--clr-primary), 0.5);
   --accent-color: hsl(var(--clr-accent));
   --accent-color-100: hsl(var(--clr-accent), 0.15);
 
@@ -23,6 +24,7 @@
   --clr-secondary: 125, 70%, 40%;
   --clr-neutral: 0, 0%, 47%;
   --secondary-color: hsl(var(--clr-secondary));
+  --secondary-color-500: hsl(var(--clr-secondary), 0.5);
   --neutral-color: hsl(var(--clr-neutral));
 
   /* transparent */

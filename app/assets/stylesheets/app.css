@@ -1,3 +1,14 @@
+.flash {
+  display: none;
+  width: 100%;
+  text-align: center;
+  padding-block: 0.25em;
+}
+
+.flash--show { display: block; }
+.flash--notice { background-color: var(--secondary-color-500); }
+.flash--alert { background-color: var(--primary-color-500); }
+
 .user__item {
   padding: 1em;
 }
@@ -56,22 +67,32 @@
   color: var(--accent-color);
 }
 
+.post--new,
+.comment--new {
+  flex-wrap: wrap;
+}
+
 .bio__paragraph,
 .post__header { margin-block-end: 0.75rem; }
 
 .post {
   padding: 1em;
-  display: block;
-}
-
-.post--link {
   background-color: var(--app-white);
   transition: background-color var(--default-transition);
+  pointer-events: none;
 }
 
-.post--link:hover,
-.post--link:focus {
+.post:hover {
   background-color: var(--primary-color-100);
+}
+
+.post .post--link {
+  transition: color var(--default-transition);
+  pointer-events: auto;
+}
+
+.post .post--link:hover {
+  color: var(--accent-color);
 }
 
 .post__number,
@@ -79,17 +100,28 @@
 
 .post + .post { margin-block-start: 0.75em; }
 
-.post__author { text-align: end; }
+.post__author {
+  padding: 0.125em 0.25em;
+  color: var(--primary-color);
+  background-color: var(--accent-color);
+  text-align: end;
+}
 
 .post__counters {
   display: inline-flex;
   text-align: end;
+  align-items: center;
   width: 100%;
+  margin-block-start: 0.5em;
 }
 
 .post--comments {
-  background-color: var(--app-background);
   margin-block-start: 0.75em;
+}
+
+.post--comments,
+.post--comments__all {
+  background-color: var(--app-background);
   padding: 0.5em;
 }
 
@@ -98,6 +130,17 @@
 .comment + .comment { margin-block-start: 0.25em; }
 
 .actions {
-  padding-block: 1em;
+  font-size: var(--fs-600);
+  padding-block-start: 0;
   text-align: center;
 }
+
+.form { flex-basis: 100%; }
+
+.form__field,
+.form__input {
+  width: 100%;
+}
+
+.form__input { border: var(--border-accent-200); }
+.form__actions { padding-block-start: 1em; }

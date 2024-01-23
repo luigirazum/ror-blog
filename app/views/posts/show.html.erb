@@ -1,4 +1,4 @@
-<article class="post fs-300 border-primary bg-white">
+<section class="post fs-300 border-primary bg-white">
   <h2 class="ff-headings fs-600 full-post">
     <span class="fw-bold full-post__number">Post #<%= @post.id %></span> | <%= @post.title %>
   </h2>
@@ -13,13 +13,9 @@
   </div>
   <p class="full-post__text fs-400"> <%= @post.text %> </p>
 
-  <section class="post--comments__all fs-400 border-neutral">
+  <div class="post--comments__all fs-400 border-neutral">
     <h3 class="ff-headings fw-bold fs-500 border-heading-neutral">Post Comments</h3>
     <%= render_comments(@post.comments) %>
-  </section>
-</article>
-<section class="actions">
-  <%= link_to 'See all users', root_path, class: 'btn btn--primary' %>
-  <%= link_to 'See Author', user_path(@post.author), class: 'btn btn--primary' %>
-  <%= link_to 'See Author\'s Posts', user_posts_path(@post.author), class: 'btn btn--primary' %>
+  </div>
 </section>
+<%= render partial: 'application/buttons', locals: { user: @post.author, post: @post } %>

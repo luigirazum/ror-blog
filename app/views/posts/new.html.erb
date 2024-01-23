@@ -1,0 +1,18 @@
+<section class="post--new border-primary bg-white flex">
+  <h2 class="ff-headings fw-bold fs-700">New Post</h2>
+  <%= form_with model: @post, class: 'form' do |f| %>
+    <div class="form__field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'form__input' %>
+    </div>
+    <div class="form__field">
+      <%= f.label :message %><br>
+      <%= f.text_area :text, size: "60x14", class: 'form__input' %>
+    </div>
+
+    <div class="form__actions flex">
+      <%= f.submit "Publish", class: 'btn btn--primary' %>
+      <%= link_to 'Cancel', session[:previous_url], class: 'btn btn--primary' %>
+    </div>
+  <% end %>
+</section>
