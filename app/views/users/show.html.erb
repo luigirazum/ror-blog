@@ -3,7 +3,7 @@
 </section>
 <section class="bio fs-400 border-primary">
   <h2 class="ff-headings fw-bold fs-700">Bio</h2>
-  <% @user.bio.split('\n').each do |p| %>
+  <% @user.bio&.split('\n').each do |p| %>
     <p class="bio__paragraph"><%= p %></p>
   <% end %>
 </section>

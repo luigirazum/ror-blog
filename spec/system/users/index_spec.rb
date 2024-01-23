@@ -42,4 +42,18 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
       end
     end
   end
+
+  describe '* testing interactions' do
+    describe '- when clicking on a user' do
+      before { visit users_path }
+
+      it "> it redirects to that user's show page" do
+        users.each do |user|
+          find("a[href='#{user_path(user)}']").click
+          expect(page).to have_current_path(user_path(user))
+          visit users_path
+        end
+      end
+    end
+  end
 end
