@@ -5,8 +5,8 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
 
   before do
     names = %w[Tom Patricia Brad Leticia]
-    5.times.each do |i|
-      users << User.create(name: names[i], photo: "https://www.pngegg.com/en/png-#{names[i]}")
+    4.times.each do |i|
+      users << User.create(name: names[i], bio: 'user bio', photo: "https://www.pngegg.com/en/png-#{names[i]}")
     end
   end
 
