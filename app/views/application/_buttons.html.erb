@@ -1,6 +1,3 @@
-<%= local_assigns.fetch(:user, nil) %>
-<%= local_assigns.fetch(:post, nil) %>
-<%= local_assigns.fetch(:page, nil) %>
 <section class="actions">
   <% if current_page?(root_path) %>
     <%= link_to('New Post', new_post_path, class: 'btn btn--primary') %>
