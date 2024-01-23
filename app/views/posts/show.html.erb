@@ -18,8 +18,4 @@
     <%= render_comments(@post.comments) %>
   </div>
 </section>
-<section class="actions">
-  <%= link_to 'See all users', root_path, class: 'btn btn--primary' %>
-  <%= link_to 'See Author', user_path(@post.author), class: 'btn btn--primary' %>
-  <%= link_to 'See Author\'s Posts', user_posts_path(@post.author), class: 'btn btn--primary' %>
-</section>
+<%= render partial: 'application/buttons', locals: { user: @post.author, post: @post } %>

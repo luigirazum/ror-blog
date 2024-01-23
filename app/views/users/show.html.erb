@@ -11,6 +11,4 @@
   <h2 class="ff-headings fw-bold fs-700">Recent Posts</h2>
   <%= render_posts %>
 </section>
-<section class="actions">
-  <%= link_to 'See all posts', user_posts_path(@user), class: 'btn btn--primary' %>
-</section>
+<%= render partial: 'application/buttons', locals: { user: @user } %>
