@@ -40,6 +40,10 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
           expect(user).to have_css("a[href='/users/#{users[i].id}']")
         end
       end
+
+      it '> a [New Post] button is available' do
+        expect(page).to have_link('New Post')
+      end
     end
   end
 
