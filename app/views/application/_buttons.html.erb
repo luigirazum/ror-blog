@@ -1,5 +1,5 @@
 <section class="actions">
-  <% if current_page?(root_path) %>
+  <% if current_page?(root_url) || current_page?(users_url) %>
     <%= link_to('New Post', new_post_path, class: 'btn btn--primary') %>
   <% end %>
   <% if local_assigns.fetch(:user, nil) && current_page?(user_url(user)) %>
