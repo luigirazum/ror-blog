@@ -11,9 +11,9 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
   end
 
   describe '* verifying page content' do
-    describe '- users info' do
-      before { visit users_path }
+    before { visit users_path }
 
+    context '- users info' do
       it '> can see the username of all other users' do
         page.all('a.user__link').each_with_index do |user, i|
           expect(user).to have_css('.hero__text .hero__name', text: users[i].name)
@@ -40,7 +40,9 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
           expect(user).to have_css("a[href='/users/#{users[i].id}']")
         end
       end
+    end
 
+    context '- other elements on the page' do
       it '> a [New Post] button is available' do
         expect(page).to have_link('New Post')
       end
@@ -48,15 +50,22 @@ RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
   end
 
   describe '* testing interactions' do
-    describe '- when clicking on a user' do
-      before { visit users_path }
+    before { visit users_path }
 
+    context '- when clicking on a user' do
       it "> it redirects to that user's show page" do
         users.each do |user|
           find("a[href='#{user_path(user)}']").click
           expect(page).to have_current_path(user_path(user))
           visit users_path
         end
+      end
+    end
+
+    context '- when clicking on [New Post] button', :post do
+      it '> redirects to New Post page' do
+        click_link 'New Post'
+        expect(page).to have_current_path(new_post_path)
       end
     end
   end
