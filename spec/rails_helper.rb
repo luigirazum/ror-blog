@@ -4,6 +4,16 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
+
+# Remove warning! Rack::Handler is deprecated and replaced by Rackup::Handler
+if Rails.env.test?
+  require 'rackup'
+
+  module Rack
+    Handler = ::Rackup::Handler
+  end
+end
+
 require 'rspec/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
