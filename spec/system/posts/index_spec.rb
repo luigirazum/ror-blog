@@ -12,17 +12,17 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
 
   before(:each) do
     5.times do |i|
-      user_posts << user.posts.create(title: "post ##{i}", text: "Text for post ##{i}")
+      user_posts << user.posts.create(title: "post ##{i + 1}", text: "Text for post ##{i + 1}")
     end
 
     7.times do |i|
       post_audience << User.create(name: "user#{i}", bio: "user#{i} bio", photo: photo_link("user#{i}"))
     end
 
-    4.times.each do |i|
+    (0..user_posts.count - 2).to_a.reverse.each do |i|
       post_audience.each do |person|
-        user_posts[i + 1].comments.create(user: person, text: "comment from #{person.name}")
-        user_posts[i + 1].likes.create(user: person)
+        user_posts[i].comments.create(user: person, text: "comment from #{person.name}")
+        user_posts[i].likes.create(user: person)
       end
     end
   end
