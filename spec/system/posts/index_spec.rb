@@ -208,6 +208,13 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
           expect(page).to have_current_path(root_path)
         end
       end
+
+      context '> when clicking on [Back to User] button' do
+        it "+ redirects to 'User' page" do
+          click_link('Back to User')
+          expect(page).to have_current_path(user_path(user))
+        end
+      end
     end
   end
 end
