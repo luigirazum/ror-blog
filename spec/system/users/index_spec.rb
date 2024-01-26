@@ -1,12 +1,16 @@
 require 'rails_helper'
 
+def photo_link(user_name = 'user')
+  "https://fakeimg.pl/160x160/252f3f,255/f29800,255/?font=roboto&text=#{user_name}+📸"
+end
+
 RSpec.describe "Page: 'All users' | 'users#index'", type: :system do
   let!(:users) { [] }
 
   before do
     names = %w[Tom Patricia Brad Leticia]
     4.times.each do |i|
-      users << User.create(name: names[i], bio: 'user bio', photo: "https://www.pngegg.com/en/png-#{names[i]}")
+      users << User.create(name: names[i], bio: 'user bio', photo: photo_link(names[i]))
     end
   end
 
