@@ -124,5 +124,23 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
       end
     end
 
+    describe "- in the 'Recent Comments' section at each post" do
+      context '> when a post has comments' do
+        it '+ can see the five most recent comments' do
+          page.all('.post').each_with_index do |post, i|
+            expect(post).to have_css('.post--comments')
+            within(post) { expect(page.all('.comment').count).to eq(user_posts.reverse[i].most_recent_comments.count) }
+          end
+        end
+      end
+
+      context '> when a post has NO comments' do
+        it "+ can see 'The post has no comments yet!' message" do
+          within(page.all('.post--comments')[0]) do
+            expect(page).to have_css('p', text: /The post has no comments yet!/)
+          end
+        end
+      end
+    end
   end
 end
