@@ -171,6 +171,34 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
           end
         end
       end
+
+      context '> when clicking on [Give Like] button' do
+        it "+ redirects to the user's posts page" do
+          user_posts.each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            expect(page).to have_current_path(user_posts_path(post.author))
+            visit user_posts_path(user)
+          end
+        end
+
+        it "+ the message 'You Liked the post successfully. is displayed" do
+          user_posts.each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            expect(page).to have_text('You Liked the post successfully.')
+            visit user_posts_path(user)
+          end
+        end
+
+        it '+ increases the number of Likes by 1' do
+          user_posts.each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            within(find("a[href='/users/#{user.id}/posts/#{post.id}']").find(:xpath, '..').find('.post__counters')) do
+              likes_text = /Likes: #{post.likes_counter_was + 1}/
+              expect(page).to have_css('p.counter', text: likes_text)
+            end
+          end
+        end
+      end
     end
   end
 end
