@@ -142,5 +142,17 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
         end
       end
     end
+
+    describe '- action buttons at the bottom of the page' do
+      it '> the [See all users] button is available' do
+        expect(page).to have_css('a', text: 'See all users')
+        expect(page).to have_link('See all users')
+      end
+
+      it '> the [Back to User] button is available' do
+        expect(page).to have_css('a', text: 'Back to User')
+        expect(page).to have_link('Back to User')
+      end
+    end
   end
 end
