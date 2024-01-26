@@ -200,5 +200,14 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
         end
       end
     end
+
+    describe '- for page actions' do
+      context '> when clicking on [See all users] button' do
+        it "+ redirects to 'All users' page" do
+          click_link('See all users')
+          expect(page).to have_current_path(root_path)
+        end
+      end
+    end
   end
 end
