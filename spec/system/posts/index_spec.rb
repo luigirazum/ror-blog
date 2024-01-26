@@ -46,5 +46,17 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
         expect(page).to have_css('p', text: /Number of posts: #{user.posts_counter}/)
       end
     end
+
+    context "- can see all user's posts" do
+      it "> can see 'All Post' title" do
+        expect(page).to have_css('h2', text: 'All Posts')
+      end
+
+      it '> all posts are showed' do
+        expect(page.all('.post').count).to eq(user.posts_counter)
+      end
+    end
+
+
   end
 end
