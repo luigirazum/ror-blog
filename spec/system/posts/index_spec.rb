@@ -155,4 +155,22 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
       end
     end
   end
+
+  describe '* testing interactions' do
+    before do
+      visit user_posts_path(user)
+    end
+
+    describe '- for each post', :posts do
+      context '> when clicking on [New Comment] button' do
+        it '+ redirects to New Comment page' do
+          user_posts.each do |post|
+            find("form[action='#{new_post_comment_path(post)}']").click_on('New Comment')
+            expect(page).to have_current_path(new_post_comment_path(post))
+            visit user_posts_path(user)
+          end
+        end
+      end
+    end
+  end
 end
