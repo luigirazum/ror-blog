@@ -4,5 +4,6 @@
 <section class="user-posts fs-400 border-primary">
   <h2 class="ff-headings fw-bold fs-700">All Posts</h2>
   <%= render_all_posts %>
+  <%== render partial: 'application/pagination', locals: { pagy: @pagy } %>
 </section>
 <%= render partial: 'application/buttons', locals: { user: @user } %>
