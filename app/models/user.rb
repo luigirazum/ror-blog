@@ -24,6 +24,6 @@ class User < ApplicationRecord
   # most_recent_posts > retrieves the 'n' most recent posts
   #  - by default it will return the 3 most recent posts
   def most_recent_posts(num = 3)
-    posts.order(created_at: :desc).limit(num)
+    posts.includes(comments: [:user]).order(created_at: :desc).limit(num)
   end
 end
