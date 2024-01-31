@@ -102,4 +102,31 @@ RSpec.describe "Page: 'A single post for a user' | 'posts#show'", type: :system 
       end
     end
   end
+
+describe '* testing interactions' do
+    before { visit user_post_path(user, post) }
+
+    describe '- for page actions' do
+      context '> when clicking on [See all users] button' do
+        it "+ redirects to 'All users' page" do
+          click_link('See all users')
+          expect(page).to have_current_path(root_path)
+        end
+      end
+
+      context '> when clicking on [See Author] button' do
+        it "+ redirects to 'Author'/'User' page" do
+          click_link('See Author')
+          expect(page).to have_current_path(user_path(user))
+        end
+      end
+
+      context "> when clicking on [See Author's Posts] button" do
+        it "+ redirects to 'Author'/'User's posts page" do
+          click_link("See Author's Posts")
+          expect(page).to have_current_path(user_posts_path(user))
+        end
+      end
+    end
+  end
 end
