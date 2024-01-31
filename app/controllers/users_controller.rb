@@ -7,6 +7,6 @@ class UsersController < ApplicationController
   def show
     session[:previous_url] = request.original_url
     @user = User.find(params[:id])
-    @posts = @user.most_recent_posts
+    @pagy, @posts = pagy(@user.most_recent_posts)
   end
 end
