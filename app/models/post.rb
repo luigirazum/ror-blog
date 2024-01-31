@@ -34,7 +34,7 @@ class Post < ApplicationRecord
   # most_recent_comments > retrieves the 'n' most recent comments
   #  - by default it will return the 5 most recent comments
   def most_recent_comments(number = 5)
-    comments.order(created_at: :desc).limit(number)
+    comments.includes(:user).order(created_at: :desc).limit(number)
   end
 
   # update_posts_counter > updates how many posts a user has.
