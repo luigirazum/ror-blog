@@ -103,7 +103,7 @@ RSpec.describe "Page: 'A single post for a user' | 'posts#show'", type: :system 
     end
   end
 
-describe '* testing interactions' do
+  describe '* testing interactions' do
     before { visit user_post_path(user, post) }
 
     describe '- for page actions' do

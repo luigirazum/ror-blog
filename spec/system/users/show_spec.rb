@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 def photo_link(user_name = 'user')
-  "https://fakeimg.pl/160x160/252f3f,255/f29800,255/?font=roboto&text=#{user_name}+:camera_with_flash:"
+  "https://fakeimg.pl/160x160/252f3f,255/f29800,255/?font=roboto&text=#{user_name}+📸"
 end
 
 RSpec.describe "Page: 'User' | 'users#show'", type: :system do
@@ -130,9 +130,8 @@ RSpec.describe "Page: 'User' | 'users#show'", type: :system do
       end
     end
   end
-end
 
-describe '* testing interactions' do
+  describe '* testing interactions' do
     before { visit user_path(user) }
 
     describe '- for each post' do
