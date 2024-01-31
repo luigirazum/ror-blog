@@ -135,6 +135,17 @@ RSpec.describe "Page: 'User' | 'users#show'", type: :system do
     before { visit user_path(user) }
 
     describe '- for each post' do
+      context "> when clicking on the [Post's Title]" do
+        it "+ redirects to the 'Post's page" do
+          page.all('.post').each_with_index do |_post, i|
+            post_title = "Post ##{user_posts.reverse[i].id} | #{user_posts.reverse[i].title}"
+            click_on(post_title)
+            expect(page).to have_current_path(user_post_path(user, user_posts.reverse[i]))
+            visit user_path(user)
+          end
+        end
+      end
+
       context '> when clicking on [New Comment] button' do
         it '+ redirects to New Comment page' do
           user_posts.reverse[0..2].each do |post|
