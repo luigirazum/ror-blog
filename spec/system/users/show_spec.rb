@@ -131,3 +131,57 @@ RSpec.describe "Page: 'User' | 'users#show'", type: :system do
     end
   end
 end
+
+describe '* testing interactions' do
+    before { visit user_path(user) }
+
+    describe '- for each post' do
+      context '> when clicking on [New Comment] button' do
+        it '+ redirects to New Comment page' do
+          user_posts.reverse[0..2].each do |post|
+            find("form[action='#{new_post_comment_path(post)}']").click_on('New Comment')
+            expect(page).to have_current_path(new_post_comment_path(post))
+            visit user_path(user)
+          end
+        end
+      end
+
+      context '> when clicking on [Give Like] button' do
+        it "+ redirects to the user's posts page" do
+          user_posts.reverse[0..2].each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            expect(page).to have_current_path(user_posts_path(post.author))
+            visit user_path(user)
+          end
+        end
+
+        it "+ the message 'You Liked the post successfully. is displayed" do
+          user_posts.reverse[0..2].each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            expect(page).to have_text('You Liked the post successfully.')
+            visit user_path(user)
+          end
+        end
+
+        it '+ increases the number of Likes by 1' do
+          user_posts.reverse[0..2].each do |post|
+            find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
+            within(find("a[href='/users/#{user.id}/posts/#{post.id}']").find(:xpath, '..').find('.post__counters')) do
+              likes_text = /Likes: #{post.likes_counter_was + 1}/
+              expect(page).to have_css('p.counter', text: likes_text)
+            end
+          end
+        end
+      end
+    end
+
+    describe '- for page actions' do
+      context '> when clicking on [See all posts] button' do
+        it "+ redirects to 'All users' posts page" do
+          click_link('See all posts')
+          expect(page).to have_current_path(user_posts_path(user))
+        end
+      end
+    end
+  end
+end
