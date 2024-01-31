@@ -18,7 +18,20 @@ body {
 section { padding: 1.5em; }
 section + section { margin-block-start: 2.5rem; }
 
-.btn {
+.pagination {
+  text-align: center;
+  padding-block: 0.5em;
+}
+
+.active {
+  font-weight: var(--fw-bold);
+  background-color: var(--primary-color);
+}
+
+.btn,
+.page,
+.page.prev,
+.page.next {
   cursor: pointer;
   line-height: 1;
   font-family: var(--ff-controls);
@@ -26,11 +39,22 @@ section + section { margin-block-start: 2.5rem; }
   display: inline-block;
 }
 
+.page {
+  padding: 0.5em 0.35em;
+}
+
+.page:hover {
+  background-color: var(--neutral-color);
+}
+
 .btn + .btn,
 .btn--form + .btn--form {
   margin-inline-start: 1em;
 }
 
+.page:active,
+.page.prev,
+.page.next,
 .btn--primary {
   background-color: var(--accent-color);
   color: var(--primary-color);
@@ -42,12 +66,18 @@ section + section { margin-block-start: 2.5rem; }
   pointer-events: auto;
 }
 
+.page.prev:hover,
+.page.prev:focus,
+.page.next:hover,
+.page.next:focus,
 .btn--primary:hover,
 .btn--primary:focus {
   color: var(--accent-color);
   background-color: var(--neutral-color);
 }
 
+.page.prev:active,
+.page.next:active,
 .btn--primary:active,
 .post .btn--primary:active {
   background-color: var(--app-text);
