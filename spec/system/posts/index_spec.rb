@@ -5,6 +5,7 @@ def photo_link(user_name = 'user')
 end
 
 RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
+  let!(:page_posts) { 3 }
   let!(:uname) { 'author' }
   let!(:user) { User.create(name: uname, bio: 'post author bio', photo: photo_link(uname)) }
   let!(:user_posts) { [] }
@@ -53,7 +54,38 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
       end
 
       it '> all posts are showed' do
-        expect(page.all('.post').count).to eq(user.posts_counter)
+        if user.posts_counter > page_posts
+          expect(page.all('.post').count).to eq(page_posts)
+        else
+          expect(page.all('.post').count).to eq(user.posts_counter)
+        end
+      end
+
+      context "> when the user hasn't post anything" do
+        it "+ can see 'The user has no posts yet! message" do
+          new_user = User.create(name: 'Without posts', bio: 'Without bio', photo: photo_link('No Posts'))
+          visit user_posts_path(new_user)
+          expect(page).to have_css('.user-posts p', text: /The user has no posts yet!/)
+        end
+      end
+    end
+
+    describe '- pagination controls' do
+      it '> are showed when the user has more than 3 posts' do
+        expect(page).to have_css('.pagination')
+      end
+
+      it '> are hidden when the user has 3 posts or less' do
+        three_user = User.create(name: 'Three or less', bio: 'With three or less posts', photo: photo_link('AtMost3'))
+        visit user_posts_path(three_user)
+        expect(page).not_to have_css('.pagination')
+        three_user.posts.create(title: 'first', text: 'first post')
+        three_user.posts.create(title: 'second', text: 'second post')
+        visit user_posts_path(three_user)
+        expect(page).not_to have_css('.pagination')
+        three_user.posts.create(title: 'third', text: 'third post')
+        visit user_posts_path(three_user)
+        expect(page).not_to have_css('.pagination')
       end
     end
 
@@ -175,7 +207,7 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
 
       context '> when clicking on [New Comment] button' do
         it '+ redirects to New Comment page' do
-          user_posts.each do |post|
+          user_posts.reverse.first(page_posts).each do |post|
             find("form[action='#{new_post_comment_path(post)}']").click_on('New Comment')
             expect(page).to have_current_path(new_post_comment_path(post))
             visit user_posts_path(user)
@@ -185,7 +217,7 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
 
       context '> when clicking on [Give Like] button' do
         it "+ redirects to the user's posts page" do
-          user_posts.each do |post|
+          user_posts.reverse.first(page_posts).each do |post|
             find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
             expect(page).to have_current_path(user_posts_path(post.author))
             visit user_posts_path(user)
@@ -193,7 +225,7 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
         end
 
         it "+ the message 'You Liked the post successfully. is displayed" do
-          user_posts.each do |post|
+          user_posts.reverse.first(page_posts).each do |post|
             find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
             expect(page).to have_text('You Liked the post successfully.')
             visit user_posts_path(user)
@@ -201,7 +233,7 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
         end
 
         it '+ increases the number of Likes by 1' do
-          user_posts.each do |post|
+          user_posts.reverse.first(page_posts).each do |post|
             find("form[action='#{post_likes_path(post)}']").click_on('Give Like')
             within(find("a[href='/users/#{user.id}/posts/#{post.id}']").find(:xpath, '..').find('.post__counters')) do
               likes_text = /Likes: #{post.likes_counter_was + 1}/
@@ -209,6 +241,20 @@ RSpec.describe "Page: 'All posts for a user' | 'posts#index'", type: :system do
             end
           end
         end
+      end
+    end
+
+    describe '- when [Pagination Controls] are showed' do
+      it '> clicking the [Next >] button switches the page' do
+        find('.page.next').find("a[href='/users/#{user.id}/posts?page=2']").click
+        expect(page).to have_selector('.pagination')
+        expect(page).to have_current_path(user_posts_path(user, page: '2'))
+      end
+
+      it '> clicking the next page shows the next 3 posts' do
+        find('.page.next').find("a[href='/users/#{user.id}/posts?page=2']").click
+        expect(page).to have_current_path(user_posts_path(user, page: '2'))
+        expect(page.all('.post').count).to eq(2)
       end
     end
 
