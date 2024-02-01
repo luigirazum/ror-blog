@@ -38,6 +38,9 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
+# Use pagy, a Pagination Ruby Gem [https://ddnexus.github.io/pagy/]
+gem 'pagy', '~> 6.4'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
@@ -68,4 +71,10 @@ group :development do
 
   # Write tests and unit tests using BDD/TDD [https://rspec.info/]
   gem 'rspec-rails'
+end
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end

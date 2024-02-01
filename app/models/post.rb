@@ -3,9 +3,10 @@ class Post < ApplicationRecord
   after_destroy :update_posts_counter
 
   # associations
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id', inverse_of: 'posts', counter_cache: :posts_counter
-  has_many :comments
-  has_many :likes
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id', inverse_of: :posts, counter_cache: :posts_counter
+  has_many :comments, inverse_of: :post
+  has_many :users, through: :comments
+  has_many :likes, inverse_of: :post
 
   # validations
   # title > must not be blank and must not exceed 250 characters.
@@ -33,7 +34,7 @@ class Post < ApplicationRecord
   # most_recent_comments > retrieves the 'n' most recent comments
   #  - by default it will return the 5 most recent comments
   def most_recent_comments(number = 5)
-    comments.order(created_at: :desc).limit(number)
+    comments.includes(:user).order(created_at: :desc).limit(number)
   end
 
   # update_posts_counter > updates how many posts a user has.

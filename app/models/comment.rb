@@ -3,8 +3,8 @@ class Comment < ApplicationRecord
   after_destroy :update_comments_counter
 
   # associations
-  belongs_to :user
-  belongs_to :post, counter_cache: :comments_counter
+  belongs_to :user, inverse_of: :comments
+  belongs_to :post, inverse_of: :comments, counter_cache: :comments_counter
 
   # custom methods
   # update_comments_counter > updates how many comments a post has.

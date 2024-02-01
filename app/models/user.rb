@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # associations
-  has_many :posts, foreign_key: 'author_id', inverse_of: 'author'
-  has_many :comments
-  has_many :likes
+  has_many :posts, foreign_key: 'author_id', inverse_of: :author
+  has_many :comments, inverse_of: :user
+  has_many :likes, inverse_of: :user
 
   # validations
   # name > can't be blank
@@ -24,6 +24,6 @@ class User < ApplicationRecord
   # most_recent_posts > retrieves the 'n' most recent posts
   #  - by default it will return the 3 most recent posts
   def most_recent_posts(num = 3)
-    posts.order(created_at: :desc).limit(num)
+    posts.includes(comments: [:user]).order(created_at: :desc).limit(num)
   end
 end
