@@ -51,7 +51,7 @@ RSpec.describe "Page: 'User' | 'users#show'", type: :system do
       end
     end
 
-    context "- can see user's three most recent posts" do
+    describe "- can see user's three most recent posts" do
       it "> can see 'Recent Posts' title" do
         expect(page).to have_css('h2', text: 'Recent Posts')
       end
@@ -59,6 +59,20 @@ RSpec.describe "Page: 'User' | 'users#show'", type: :system do
       it '> the three most recent posts are showed' do
         expect(page.all('.post').count).to eq(user.most_recent_posts.count)
         expect(user_posts.reverse[0..2]).to eq(user.most_recent_posts)
+      end
+
+      context "> when the user hasn't post anything" do
+        it "+ can see 'The user has no posts yet! message" do
+          new_user = User.create(name: 'Without posts', bio: 'Without bio', photo: photo_link('No Posts'))
+          visit user_path(new_user)
+          expect(page).to have_css('.user-posts p', text: /The user has no posts yet!/)
+        end
+      end
+    end
+
+    describe '- pagination controls' do
+      it '> are hidden because the view can hold 3 posts' do
+        expect(page).not_to have_css('.pagination')
       end
     end
 
