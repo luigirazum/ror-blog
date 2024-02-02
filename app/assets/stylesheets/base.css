@@ -25,12 +25,13 @@ section + section { margin-block-start: 2.5rem; }
 
 .pagination {
   text-align: center;
-  padding-block: 0.5em;
+  padding-block-start: 1em;
 }
 
 .active {
   font-weight: var(--fw-bold);
   background-color: var(--primary-color);
+  pointer-events: none;
 }
 
 .lnk,
@@ -80,6 +81,11 @@ section + section { margin-block-start: 2.5rem; }
   color: var(--primary-color);
   transition: color var(--default-transition);
   transition: background-color var(--default-transition);
+}
+
+.page.disabled {
+  background-color: var(--clr-disabled);
+  pointer-events: none;
 }
 
 .post .btn--primary {
