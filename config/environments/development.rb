@@ -32,6 +32,17 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+  
+  # Ensure you have defined default url options in your environments files. Here
+  # is an example of default_url_options appropriate for a development environment
+  # in config/environments/development.rb:
+
+  #   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # In production, :host should be set to the actual host of your application.
+
+  # * Required for all applications. *
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local

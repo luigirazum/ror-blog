@@ -9,6 +9,10 @@
 .flash--notice { background-color: var(--secondary-color-500); }
 .flash--alert { background-color: var(--primary-color-500); }
 
+.session-nav {
+  padding-block: 0.5em;
+}
+
 .user__item {
   padding: 1em;
 }
@@ -137,10 +141,44 @@
 
 .form { flex-basis: 100%; }
 
+.form__hint {
+  font-size: var(--fs-100);
+}
+
+.form__field {
+  margin-block-start: 1rem;
+}
+
+.field_with_errors {
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .form__field,
 .form__input {
   width: 100%;
 }
 
-.form__input { border: var(--border-accent-200); }
+.form__input {
+  padding: 0.25em 0.5em;
+  border: var(--border-accent-200);
+}
+
+.form__inline {
+  display: inline-flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.form__checkbox {
+  width: 1.25em;
+  height: 1.25em;
+}
 .form__actions { padding-block-start: 1em; }
+
+.action__links {
+  margin-block-start: 1em;
+  gap: 1rem;
+}

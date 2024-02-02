@@ -5,6 +5,7 @@
   --clr-background: 0, 0%, 93%;
   --clr-white: 0, 0%, 96%;
   --clr-text: 217, 26%, 5%;
+  --clr-disabled: hsl(var(--clr-accent), 0.75);
   --app-background: hsl(var(--clr-background));
   --app-white: hsl(var(--clr-white));
   --app-text: hsl(var(--clr-text));

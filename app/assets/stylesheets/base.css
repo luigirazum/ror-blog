@@ -15,19 +15,26 @@ body {
   margin-inline: auto;
 }
 
+.session-nav {
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
 section { padding: 1.5em; }
 section + section { margin-block-start: 2.5rem; }
 
 .pagination {
   text-align: center;
-  padding-block: 0.5em;
+  padding-block-start: 1em;
 }
 
 .active {
   font-weight: var(--fw-bold);
   background-color: var(--primary-color);
+  pointer-events: none;
 }
 
+.lnk,
 .btn,
 .page,
 .page.prev,
@@ -37,6 +44,20 @@ section + section { margin-block-start: 2.5rem; }
   font-family: var(--ff-controls);
   padding: 0.5em 1em;
   display: inline-block;
+}
+
+.lnk--txt {
+  color: var(--accent-color);
+  padding: 0.5em 0;
+}
+
+.lnk--txt:hover,
+.lnk--txt:focus {
+  color: var(--primary-color);
+}
+
+.lnk--txt:active {
+  color: var(--neutral-color);
 }
 
 .page {
@@ -60,6 +81,11 @@ section + section { margin-block-start: 2.5rem; }
   color: var(--primary-color);
   transition: color var(--default-transition);
   transition: background-color var(--default-transition);
+}
+
+.page.disabled {
+  background-color: var(--clr-disabled);
+  pointer-events: none;
 }
 
 .post .btn--primary {
