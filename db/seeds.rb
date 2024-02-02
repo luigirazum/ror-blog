@@ -23,7 +23,7 @@
     user_bio << Faker::Lorem.paragraphs(number: 3).join(' ')
   end
 
-  User.create(name: uname, photo: photo_url, bio: user_bio.join('\\n'))
+  User.create(name: uname, photo: photo_url, bio: user_bio.join('\\n'), email: "#{name}@me.com", password: 'pwd#1234', confirmed_at: Time.now)
 end
 
 # Generate Posts
