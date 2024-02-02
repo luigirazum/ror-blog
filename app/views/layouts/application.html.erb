@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render 'application/session_links' %>
     <p class="fw-bold flash flash--notice <%= 'flash--show' if notice %>"><%= notice %></p>
     <p class="fw-bold flash flash--alert <%= 'flash--show' if alert %>"><%= alert %></p>
     <main class="main container">
