@@ -41,4 +41,4 @@ node_modules/
 .vscode
 
 # add db settings to avoid conflicts with local setup
-config/database.yml
+/config/database.yml
