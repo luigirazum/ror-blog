@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  before_create :set_default_photo
+  before_create :set_default_bio
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,5 +33,13 @@ class User < ApplicationRecord
   #  - by default it will return the 3 most recent posts
   def most_recent_posts(num = 3)
     posts.includes(comments: [:user]).order(created_at: :desc).limit(num)
+  end
+
+  def set_default_photo
+    self.photo = "https://fakeimg.pl/160x160/252f3f,255/f29800,255/?font=roboto&text=#{name.split.first}+📸"
+  end
+
+  def set_default_bio
+    self.bio = 'My Bio.\nA little about me.'
   end
 end
