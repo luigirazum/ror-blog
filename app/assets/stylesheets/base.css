@@ -15,6 +15,11 @@ body {
   margin-inline: auto;
 }
 
+.session-nav {
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
 section { padding: 1.5em; }
 section + section { margin-block-start: 2.5rem; }
 
@@ -28,6 +33,7 @@ section + section { margin-block-start: 2.5rem; }
   background-color: var(--primary-color);
 }
 
+.lnk,
 .btn,
 .page,
 .page.prev,
@@ -37,6 +43,20 @@ section + section { margin-block-start: 2.5rem; }
   font-family: var(--ff-controls);
   padding: 0.5em 1em;
   display: inline-block;
+}
+
+.lnk--txt {
+  color: var(--accent-color);
+  padding: 0.5em 0;
+}
+
+.lnk--txt:hover,
+.lnk--txt:focus {
+  color: var(--primary-color);
+}
+
+.lnk--txt:active {
+  color: var(--neutral-color);
 }
 
 .page {
