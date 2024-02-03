@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  ROLES = %i[admin user].freeze
   before_create :set_default_photo
   before_create :set_default_bio
 
@@ -41,5 +42,13 @@ class User < ApplicationRecord
 
   def set_default_bio
     self.bio = 'My Bio.\nA little about me.'
+  end
+
+  def user?
+    role == 'user'
+  end
+
+  def admin?
+    role == 'admin'
   end
 end
