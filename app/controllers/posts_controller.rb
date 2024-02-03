@@ -39,8 +39,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    flash[:alert] = "Delete post #{params[:id]}"
-    redirect_back_or_to(root_url)
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "The post ##{params[:id]} was successfully deleted."
+    else
+      flash[:alert] = 'Something went wrong while trying to delete the post.'
+    end
+
+    redirect_back_or_to(session[:previous_url])
   end
 
   private

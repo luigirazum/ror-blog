@@ -19,7 +19,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    flash[:alert] = "Delete comment #{params[:id]} at the post #{params[:post_id]}"
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:notice] = "The comment ##{params[:id]} was successfully deleted."
+    else
+      flash[:alert] = 'Something went wrong while trying to delete the comment.'
+    end
+
     redirect_back_or_to(session[:previous_url])
   end
 
