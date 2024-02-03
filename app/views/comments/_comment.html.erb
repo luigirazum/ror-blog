@@ -1,1 +1,6 @@
-<p class="comment"><span class="comment__user"><%= comment.user.name %>: </span><%= comment.text %></p>
+<div class="comment">
+  <p><span class="comment__user"><%= comment.user.name %>: </span><%= comment.text %></p>
+  <% if can? :destroy, comment %>
+    <%= button_to("Delete", comment_path(comment),  method: :delete, data: { turbo_confirm: "Deleting this comment. Are you sure?" }, class: 'btn btn--primary', form_class: 'btn--form') %>
+  <% end %>
+</div>
