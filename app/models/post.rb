@@ -4,9 +4,9 @@ class Post < ApplicationRecord
 
   # associations
   belongs_to :author, class_name: 'User', foreign_key: 'author_id', inverse_of: :posts, counter_cache: :posts_counter
-  has_many :comments, inverse_of: :post
+  has_many :comments, inverse_of: :post, dependent: :destroy
   has_many :users, through: :comments
-  has_many :likes, inverse_of: :post
+  has_many :likes, inverse_of: :post, dependent: :destroy
 
   # validations
   # title > must not be blank and must not exceed 250 characters.
