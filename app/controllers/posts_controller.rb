@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @author = current_user
     @post.author = current_user
     respond_to do |format|
       format.html { render :new, locals: { post: @post } }
@@ -20,20 +21,26 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @author = current_user
     @post.author = current_user
     respond_to do |format|
       format.html do
         if @post.save
           # redirect to index
-          redirect_to user_posts_path(@post.author), notice: 'The Post was published successfully.'
+          redirect_to user_posts_path(@author), notice: 'The Post was published successfully.'
         else
           # error message
           flash[:alert] = @post.errors.full_messages.first
           # render new
-          redirect_back_or_to(new_post_url(@post))
+          redirect_back_or_to(new_user_post_path(@author))
         end
       end
     end
+  end
+
+  def destroy
+    flash[:alert] = "Delete post #{params[:id]}"
+    redirect_back_or_to(root_url)
   end
 
   private
