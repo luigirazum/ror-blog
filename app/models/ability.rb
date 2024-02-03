@@ -27,8 +27,11 @@ class Ability
     return unless user.present?
 
     # can see users, posts, comments and likes
-    # deletes Posts owned by user
     can :read, :all
+
+    # deletes Posts and Comments owned by user
+    return unless user.user?
+
     can :destroy, Post, author: user
     can(:destroy, Comment, user:)
     return unless user.admin?
