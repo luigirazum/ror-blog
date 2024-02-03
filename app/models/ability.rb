@@ -29,9 +29,6 @@ class Ability
     # can see users, posts, comments and likes
     can :read, :all
 
-    # deletes Posts and Comments owned by user
-    return unless user.user?
-
     can :destroy, Post, author: user
     can(:destroy, Comment, user:)
     return unless user.admin?
