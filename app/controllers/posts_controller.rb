@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   def index
     session[:previous_url] = request.original_url
     @user = User.accessible_by(current_ability).includes(posts: [comments: [:user]]).find(params[:user_id])
-    @pagy, @posts = pagy(@user.posts.accessible_by(current_ability).includes(comments: [:user]).order(created_at: :desc))
+    @pagy, @posts = pagy(
+      @user.posts.accessible_by(current_ability)
+      .includes(comments: [:user]).order(created_at: :desc)
+    )
   end
 
   def show
