@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :posts, only: %i[new create destroy], constraints: { id: /[0-9]+/ } do
-    resources :comments, only: %i[new create]
-    resources :likes, only: %i[create]
+
+  # Add 'devise' to users
+  # devise_for :users
+  devise_for :users
+
+  resources :users, only: %i[index show], constraints: { id: /[0-9]+/ }, shallow: true do
+    resources :posts, only: %i[index show new create destroy] do
+      resources :comments, only: %i[new create destroy]
+      resources :likes, only: %i[create]
+    end
   end
 
-  resources :users, only: %i[index show], constraints: { id: /[0-9]+/ } do
-    resources :posts, only: %i[index show]
-  end
-
-  resources :comments, only: %i[destroy], constraints: { id: /[0-9]+/ }
+  # resources :posts, only: %i[new create destroy], constraints: { id: /[0-9]+/ } do
+  # end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -18,8 +22,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "users#index"
-
-  # Add 'devise' to users
-  # devise_for :users
-  devise_for :users
 end
