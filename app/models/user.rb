@@ -44,6 +44,10 @@ class User < ApplicationRecord
     self.bio = 'My Bio.\nA little about me.'
   end
 
+  def user?
+    role == 'user'
+  end
+
   def admin?
     role == 'admin'
   end
