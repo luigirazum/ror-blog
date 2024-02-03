@@ -1,6 +1,6 @@
 <section class="post--new border-primary bg-white flex">
   <h2 class="ff-headings fw-bold fs-700">New Post</h2>
-  <%= form_with model: @post, class: 'form' do |f| %>
+  <%= form_with model: [@author, @post], class: 'form' do |f| %>
     <div class="form__field">
       <%= f.label :title %><br>
       <%= f.text_field :title, class: 'form__input' %>
